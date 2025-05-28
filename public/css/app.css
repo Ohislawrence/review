@@ -1,0 +1,35 @@
+/* Custom Variables */
+:root {
+    --primary: #0d6efd;
+    --primary-dark: #0b5ed7;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.1), url('/images/hero-bg.jpg');
+    background-size: cover;
+}
+
+/* Product Cards */
+.card {
+    transition: transform 0.2s;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Affiliate Button Styling */
+.btn-affiliate {
+    background: var(--primary);
+    border: none;
+}
+.btn-affiliate:hover {
+    background: var(--primary-dark);
+}
+
+/* Trust Badges */
+.trust-badge {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
