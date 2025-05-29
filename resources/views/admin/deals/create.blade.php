@@ -105,11 +105,11 @@
                     </div>
                     <div class="mb-3">
                       <label for="name" class="form-label">Price</label>
-                      <input type="number" name="price" class="form-control" id="price" value="{{ old('price') }}" required>
+                      <input type="text" name="price" class="form-control" id="price" value="{{ old('price') }}" required>
                     </div>
                     <div class="mb-3">
                       <label for="name" class="form-label">Deal Price</label>
-                      <input type="number" name="deal_price" class="form-control" id="price" value="{{ old('deal_price') }}" required>
+                      <input type="text" name="deal_price" class="form-control" id="price" value="{{ old('deal_price') }}" required>
                     </div>
                     <div class="mb-3">
                         <label for="role" class="form-label">Status</label>

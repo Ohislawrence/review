@@ -2,9 +2,9 @@
 @section('title',  'Top SaaS Lifetime Deals, Discounts & Promos' )
 @section('type',  'website' )
 @section('url',  Request::url() )
-@section('image',  asset("publicassets/images/ogimg.jpg") )
-@section('description',  '' )
-@section('imagealt',  'Learn about what we do' )
+@section('image',  asset("assets/images/saas-deals-curation.jpg") )
+@section('description',  'Stop overpaying for tools. Discover the best SaaS deals across the web—handpicked for founders, creators, and teams.' )
+@section('imagealt',  'Curated SaaS Deals. Vetted. Verified. Updated Daily.' )
 
 
 @section('header')

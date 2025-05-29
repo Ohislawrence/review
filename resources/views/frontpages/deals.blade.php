@@ -2,9 +2,9 @@
 @section('title',  'Get hot deals around the web!' )
 @section('type',  'website' )
 @section('url',  Request::url() )
-@section('image',  asset("publicassets/images/ogimg.jpg") )
-@section('description',  '' )
-@section('imagealt',  'Learn about what we do' )
+@section('image',  asset("assets/images/saas-deals-curation.jpg") )
+@section('description',  'Discover the best SaaS deals across the web—handpicked for founders, creators, and teams.'  )
+@section('imagealt',  'Curated SaaS Deals. Vetted. Verified. Updated Daily.' )
 
 
 @section('header')
@@ -434,7 +434,7 @@
                 </div>
             </div>
             <div class="col-lg-9 order-1 order-lg-2">
-                <h3 class="">Deals</h3>
+                <h1 class="">Deals</h1>
                 <h6 class="mb-20">{{ $totalDeals }} deals found</h6>
                 <div class="row">
                     @forelse ( $deals as $deal )

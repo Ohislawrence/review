@@ -2,9 +2,9 @@
 @section('title',  $deal->name )
 @section('type',  'website' )
 @section('url',  Request::url() )
-@section('image',  asset("publicassets/images/ogimg.jpg") )
-@section('description',  '' )
-@section('imagealt',  'Learn about what we do' )
+@section('image',  asset('storage/' . $deal->images->first()->image) )
+@section('description',  Str::limit($deal->summary, 120)  )
+@section('imagealt',  $deal->title )
 
 
 @section('header')
@@ -51,6 +51,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 order-2 order-lg-1">
+                <h1 class="mb-15">{{ $deal->name }}</h1>
                 <div class="gig-details-wrapper">
                     <div class="gig-slider-wrap mb-50">
                         <div class="gigs-big-slider">

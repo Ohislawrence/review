@@ -1,5 +1,5 @@
 <!--====== Favicon Icon ======-->
-<link rel="shortcut icon" href="{{ asset('assets/images/fav.png') }}" type="image/png">
+<link rel="shortcut icon" href="{{ asset('assets/images/dealsintel-new-logo.png') }}" type="image/png">
 <!--====== Bootstrap css ======-->
 <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 <!--====== FontAwesome css ======-->

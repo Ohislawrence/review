@@ -2,9 +2,9 @@
 @section('title',  'Terms of Service' )
 @section('type',  'website' )
 @section('url',  Request::url() )
-@section('image',  asset("publicassets/images/ogimg.jpg") )
+@section('image',  asset("assets/images/saas-deals-curation.jpg"))
 @section('description',  '' )
-@section('imagealt',  'Learn about what we do' )
+@section('imagealt',  'Curated SaaS Deals. Vetted. Verified. Updated Daily.' )
 
 
 @section('header')

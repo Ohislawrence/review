@@ -3,7 +3,7 @@
 @section('type',  'website' )
 @section('url',  Request::url() )
 @section('image',  asset('storage/' . $blog->image) )
-@section('description',  '' )
+@section('description',  Str::limit($blog->desc, 120)  )
 @section('imagealt',  $blog->title )
 
 
@@ -42,7 +42,7 @@
                                     <li><span><i class="far fa-comment"></i><a href="blogs.html">Comment (5k)</a></span></li>
                                 </ul>
                             </div>
-                            <h3 class="title">{{ $blog->title }}</h3>
+                            <h1 class="title display-6">{{ $blog->title }}</h1>
                             {!! $blog->desc !!}
                         </div>
                     </div>
