@@ -1,5 +1,5 @@
 @extends('layouts.guest')
-@section('title',  'Get hot deals around the internet!' )
+@section('title',  $deal->name )
 @section('type',  'website' )
 @section('url',  Request::url() )
 @section('image',  asset("publicassets/images/ogimg.jpg") )

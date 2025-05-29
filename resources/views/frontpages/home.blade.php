@@ -1,5 +1,5 @@
 @extends('layouts.guest')
-@section('title',  'home' )
+@section('title',  'Top SaaS Lifetime Deals, Discounts & Promos' )
 @section('type',  'website' )
 @section('url',  Request::url() )
 @section('image',  asset("publicassets/images/ogimg.jpg") )

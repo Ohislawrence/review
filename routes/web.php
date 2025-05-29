@@ -124,6 +124,6 @@ Route::get('/sitemap.xml', function () {
         );
     }
     return $sitemap->toResponse(request());
-});
+})->name('sitemap');
 
 require __DIR__.'/auth.php';

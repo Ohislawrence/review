@@ -70,7 +70,7 @@
                         <ul>
                             <li><a href="{{ route('privacy') }}">Privacy</a></li>
                             <li><a href="{{ route('tos') }}">Terms</a></li>
-                            <li><a href="">Sitemap</a></li>
+                            <li><a href="{{ route('sitemap') }}">Sitemap</a></li>
                             <li><a href="">Help</a></li>
                         </ul>
                     </div>
