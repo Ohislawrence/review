@@ -9,6 +9,7 @@ use App\Models\Image;
 use App\Models\Integration;
 use App\Models\Plan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class DealsController extends Controller
@@ -107,33 +108,66 @@ class DealsController extends Controller
     public function update(Request $request, Deal $deal)
     {
         $validated = $request->validate([
-        'name'  => 'required|string|max:255|unique:deals,name',
-            'short_desc' =>'nullable',
-            'long_desc' =>'nullable',
-            'summary' =>'nullable',
-            'price' =>'nullable',
-            'deal_price' =>'nullable',
-            'status' =>'nullable',
-            'video' =>'nullable',
-            'affiliate_url' =>'nullable',
-            'code' =>'nullable',
-            'api_secret' =>'nullable',
-            'api_user' =>'nullable',
-            'deal_ends' =>'nullable',
+            'name' => 'required|string|max:255|unique:deals,name,' . $deal->id,
+            'short_desc' => 'nullable',
+            'long_desc' => 'nullable',
+            'summary' => 'nullable',
+            'price' => 'nullable',
+            'deal_price' => 'nullable',
+            'status' => 'nullable',
+            'video' => 'nullable',
+            'affiliate_url' => 'nullable',
+            'code' => 'nullable',
+            'api_secret' => 'nullable',
+            'api_user' => 'nullable',
+            'deal_ends' => 'nullable',
             'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'categories' => 'required|array',
             'categories.*' => 'exists:categories,id',
-            'rating_count' => 'nullable',
-            'rating' => 'nullable',
+            'integrations' => 'required|array',
+            'integrations.*' => 'exists:integrations,id',
+            'plan_id' => 'nullable',
+            // Add field to track deleted images if needed
+            'deleted_images' => 'nullable|array',
         ]);
-
+    
+        // Update slug if name changed
+        if ($deal->name !== $request->name) {
+            $validated['slug'] = Str::slug($validated['name']);
+        }
+    
+        // Update deal attributes
         $deal->update($validated);
-        
-        // Sync categories (removes old ones and adds new ones)
+    
+        // Sync categories
         $deal->categories()->sync($request->categories);
-
-        // ... handle images if needed ...
-
+    
+        // Sync integrations
+        $deal->integrations()->sync($request->integrations);
+    
+        // Handle deleted images
+        if ($request->has('deleted_images')) {
+            foreach ($request->deleted_images as $imageId) {
+                $image = $deal->images()->find($imageId);
+                if ($image) {
+                    // Delete from storage
+                    Storage::disk('public')->delete($image->image);
+                    // Delete from database
+                    $image->delete();
+                }
+            }
+        }
+    
+        // Handle new image uploads
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $path = $image->store('deals/images', 'public');
+                $deal->images()->create([
+                    'image' => $path
+                ]);
+            }
+        }
+    
         return back()->with('success', 'Deal updated successfully.');
         }
 

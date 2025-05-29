@@ -52,6 +52,33 @@
                             <label for="name" class="form-label">Name</label>
                             <input type="text" name="name" class="form-control" id="name" value="{{ $deal->name }}" required>
                         </div>
+                        <!-- Images -->
+    <div class="mb-3">
+        <label for="images" class="form-label">Images</label>
+        <input type="file" name="images[]" class="form-control" id="images" multiple>
+        
+        @if($deal->images->count() > 0)
+            <div class="mt-3">
+                <h6>Current Images:</h6>
+                <div class="row">
+                    @foreach($deal->images as $image)
+                        <div class="col-md-3 mb-3">
+                            <img src="{{ asset('storage/'.$image->image) }}" class="img-thumbnail" style="height: 100px;">
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" 
+                                       name="deleted_images[]" 
+                                       value="{{ $image->id }}" 
+                                       id="delete_image_{{ $image->id }}">
+                                <label class="form-check-label" for="delete_image_{{ $image->id }}">
+                                    Delete
+                                </label>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        @endif
+    </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Short Description</label>
                             <textarea name="short_desc" class="form-control">{{ $deal->short_desc }}</textarea>
@@ -64,17 +91,30 @@
                           <label for="email" class="form-label">Summary</label>
                           <textarea name="summary" class="form-control">{{ $deal->summary }}</textarea>
                         </div>
-                        <div class="mb-3">
-                            <label for="categories" class="form-label">Categories</label>
-                            <select name="categories[]" class="form-select" id="categories" multiple required>
-                                @foreach($categories as $category)
-                                    <option value="{{ $category->id }}" 
-                                        {{ in_array($category->id, $deal->categories->pluck('id')->toArray()) ? 'selected' : '' }}>
-                                        {{ $category->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
+                        <!-- Categories -->
+    <div class="mb-3">
+        <label for="categories" class="form-label">Categories</label>
+        <select name="categories[]" class="form-select" id="categories" multiple required>
+            @foreach($categories as $category)
+                <option value="{{ $category->id }}" 
+                    {{ in_array($category->id, $deal->categories->pluck('id')->toArray()) ? 'selected' : '' }}>
+                    {{ $category->name }}
+                </option>
+            @endforeach
+        </select>
+    </div>
+                        <!-- Integrations -->
+    <div class="mb-3">
+        <label for="integrations" class="form-label">Integrations</label>
+        <select name="integrations[]" class="form-select" id="integrations" multiple required>
+            @foreach($integrations as $integration)
+                <option value="{{ $integration->id }}" 
+                    {{ in_array($integration->id, $deal->integrations->pluck('id')->toArray()) ? 'selected' : '' }}>
+                    {{ $integration->name }}
+                </option>
+            @endforeach
+        </select>
+    </div>
                         <div class="mb-3">
                           <label for="name" class="form-label">Price</label>
                           <input type="number" name="price" class="form-control" id="price" value="{{ $deal->price }}" required>
@@ -87,8 +127,8 @@
                             <label for="role" class="form-label">Status</label>
                             <select name="status" class="form-select" id="role" required>
                                 <option value="">Select Status</option>
-                                <option value="active">Active</option>
-                                <option value="pending">pending</option>
+                                <option value="active" {{ $deal->status == 'active' ? 'selected' : '' }}>Active</option>
+                                <option value="pending" {{ $deal->status == 'pending' ? 'selected' : '' }}>Pending</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -105,7 +145,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary" id="updateUserBtn">Update User</button>
+                            <button type="submit" class="btn btn-primary">Update Deal</button>
                         </div>
                     </form>
         </div>
