@@ -27,11 +27,11 @@
 <div class="user-area-section pt-120 pb-120">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8">
+            <div class="col-lg-6">
+                <h3 class="justify-content-center mb-25">Welcome Back</h3>
                 <div class="user-form">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
                         <!-- Email Address -->
                         <div class="form_group">
                             <label for="email"> Email</label>
@@ -51,24 +51,13 @@
                             <error :messages="$errors->get('password')" class="mt-2" />
                         </div>
 
-                        <!-- Remember Me -->
-                        <div class="form_group">
-                            <label for="remember_me"> </label>
-                                <input id="remember_me" type="checkbox" name="remember">
-                                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                            </label>
+                        <div class="form_checkbox d-flex align-items-center">
+                            <input id="remember_me" type="checkbox" name="remember">
+                            <label for="checkbox1"><span>Remember me</span></label>
                         </div>
-
-                        <div class="flex items-center justify-end mt-4">
-                            @if (Route::has('password.request'))
-                                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                                    {{ __('Forgot your password?') }}
-                                </a>
-                            @endif
-
-                            <button class="main-btn">
-                                {{ __('Log in') }}
-                            </button>
+                        <div class="form_group">
+                            <button type="submit" class="main-btn">Login</button>
+                            <a href="{{ route('password.request') }}">Lost your password?</a>
                         </div>
                     </form>
                 </div>

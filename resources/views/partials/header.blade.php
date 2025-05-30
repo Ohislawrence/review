@@ -4,7 +4,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-2 col-md-4 col-5">
                     <div class="brand-logo">
-                        <a href="index.html"><img src="{{ asset('assets/images/logo-1.png') }}" class="img-fluid" alt="Logo"></a>
+                        <a href="index.html"><img src="{{ asset('assets/images/dealsintel-black.png') }}" class="img-fluid" alt="Logo"></a>
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-4 col-2">

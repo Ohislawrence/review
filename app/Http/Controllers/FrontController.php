@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Click;
 use App\Models\Deal;
 use App\Models\Integration;
 use Illuminate\Http\Request;
@@ -134,5 +135,29 @@ class FrontController extends Controller
     public function tos()
     {
         return view('frontpages.tos');
+    }
+
+    public function linkredirect($slug)
+    {
+        $deal = Deal::where('slug', $slug)->firstOrFail();
+
+        $ipAddress = request()->ip();
+        $userAgent = request()->userAgent();
+        $referrer = request()->header('referer');
+
+        $click = new Click([
+            'deal_id' => $deal->id,
+            'ip_address' => $ipAddress,
+            'user_agent' => $userAgent,
+            'referrer' => $referrer ?? null,
+            'country' => 'pending',
+            'clicked_at' => now(),
+        ]);
+        $click->save();
+        
+        // Increment click count on the deal
+        //$deal->increment('click_count');
+
+        return redirect($deal->affiliate_url);
     }
 }

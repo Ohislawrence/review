@@ -31,6 +31,25 @@
     }
 }
 </style>
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "{{ $deal->name }}",
+      "image": [
+        "{{ asset('storage/' . $deal->images->first()->image) }}"
+      ],
+      "description": "{{ Str::limit(strip_tags($deal->summary), 160) }}",
+      "sku": "{{ $deal->id }}",
+      "offers": {
+        "@type": "Offer",
+        "url": "{{ url('/deal/' . $deal->slug) }}",
+        "priceCurrency": "USD",
+        "price": "{{ $deal->deal_price }}",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
 @endsection
 
 
@@ -163,7 +182,7 @@
                                     </div>
                                 </div>
                                 <div class="packages-footer">
-                                    <button class="main-btn" onclick=" window.open('{{ $deal->affiliate_url }}')">Get This Deal!</span></button>
+                                    <button class="main-btn" onclick=" window.open('{{ route('linkredirect', $deal->slug) }}')">Get This Deal!</span></button>
                                     <button class="btn-link">Compare Packages</button>
                                 </div>
                             </div>

@@ -26,3 +26,6 @@
 <meta itemprop="name" content="@yield('title')">
 <meta itemprop="description" content="@yield('description')">
 <meta itemprop="image" content="@yield('image')">
+
+
+

@@ -8,7 +8,27 @@
 
 
 @section('header')
-
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "DealsIntel",
+      "url": "https://dealsintel.com",
+      "description": "Discover top SaaS deals, lifetime offers & exclusive discounts. Built for creators, marketers & founders.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "DealsIntel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://dealsintel.com/assets/images/logo-1.png.png"
+        }
+      },
+      "sameAs": [
+        "https://twitter.com/dealsintel",
+        "https://facebook.com/dealsintel"
+      ]
+    }
+    </script>
 @endsection
 
 
@@ -294,7 +314,7 @@
 <!--====== Start Newsletter ======-->
 <section class="newsletter-area-two mb-30">
     <div class="container">
-        <div class="newsletter-two-inner bg-img" data-bg-img="assets/images/newsletter-bg-1.png">
+        <div class="newsletter-two-inner bg-img" data-bg-img="{{ asset('assets/images/newsletter-bg-1.png') }}">
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="newsletter-two-content pt-70 pb-70">

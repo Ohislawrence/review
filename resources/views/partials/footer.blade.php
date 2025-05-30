@@ -5,13 +5,13 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="widget about-widget mb-40">
-                        <img src="{{ asset('assets/images/logo-2.png') }}" alt="Image">
+                        <img src="{{ asset('assets/images/dealsintel-white.png') }}" alt="Image">
                         <p>Empowering businesses to grow through smarter deals and meaningful partnerships.</p>
                         <ul class="social-link">
-                            <li><a href="404.html" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
-                            <li><a href="404.html" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="404.html" target="_blank"><i class="fab fa-google"></i></a></li>
-                            <li><a href="404.html" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                            <li><a href="" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="https://x.com/dealsintel" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="" target="_blank"><i class="fab fa-google"></i></a></li>
+                            <li><a href="https://linkedin.com/company/dealsintel" target="_blank"><i class="fab fa-linkedin"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -19,11 +19,11 @@
                     <div class="widget useful-link-widget mb-40">
                         <h4 class="widget-title">DealsIntel</h4>
                         <ul class="widget-link">
-                            <li><a href="terms-conditions.html">Conditions</a></li>
-                            <li><a href="terms-conditions.html">Terms of Use</a></li>
-                            <li><a href="services.html">Our Services</a></li>
-                            <li><a href="404.html">New Guests List</a></li>
-                            <li><a href="404.html">The Team List</a></li>
+                            <li><a href="{{ route('deals',['category' => 'ai-tools']) }}">AI Tools</a></li>
+                            <li><a href="{{ route('deals',['category' => 'crm']) }}">CRM</a></li>
+                            <li><a href="{{ route('deals',['category' => 'social-media']) }}">Social Media</a></li>
+                            <li><a href="{{ route('deals',['category' => 'productivity']) }}">Productivity</a></li>
+                            <li><a href="{{ route('deals') }}">All Deals</a></li>
                         </ul>
                     </div>
                 </div>

@@ -19,6 +19,8 @@ Route::get('blog/{slug}', [FrontController::class, 'blog'])->name('blog');
 Route::get('privacy', [FrontController::class, 'privacy'])->name('privacy');
 Route::get('tos', [FrontController::class, 'tos'])->name('tos');
 
+Route::get('get-deal/{slug}', [FrontController::class, 'linkredirect'])->name('linkredirect');
+
 /**
 Route::get('role/admin', function () {
     $user = auth()->user();
