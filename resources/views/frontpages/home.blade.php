@@ -45,43 +45,9 @@
 
 @section('content')
 <!--====== Start Banner ======-->
-<section class="banner-area-v1 bg_cover bg-img" data-bg-img="assets/images/main-bg.jpg">
+<section class="banner-area-v1 bg_cover bg-img" data-bg-img="{{ asset('assets/images/main-bg.jpg') }}">
     <div class="container">
         <div class="hero-content-slider">
-            <div class="single-slider">
-                <div class="row align-items-center">
-                    <div class="col-lg-7">
-                        <div class="banner-content">
-                            <h1 data-animation="fadeInDown" data-delay=".1s">
-                                Don’t Miss Another Great SaaS Deal
-                            </h1>
-                            <p data-animation="fadeInDown" data-delay=".2s">We track and curate the top deals before they disappear—so you save more and grow faster.</p>
-                            <div class="hero-search-form mt-40" data-animation="fadeInDown" data-delay=".2s">
-                                <div class="form-wrapper">
-                                    <form action="{{ route('deals') }}" method="GET">
-                                        <div class="form-inline">
-                                            <input type="text" name="search"
-                                            value="{{ request('search') }}" class="form_control" placeholder="e. g. Shopify store theme">
-                                            <button class="main-btn" type="submit">Search<i class="fal fa-search"></i></button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="banner-tags mt-15">
-                                    <span class="color-dark">Search 100+ SaaS deals e.g. </span>
-                                    <a href="{{ route('deals',['category' => 'ai-tools']) }}">AI tools,</a>
-                                    <a href="{{ route('deals',['category' => 'crm']) }}">CRM,</a>
-                                    <a href="{{ route('deals',['category' => 'social-media']) }}">Social Media</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="hero-img">
-                            <img src="assets/images/hero-one.png" alt="Image">
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="single-slider">
                 <div class="row align-items-center">
                     <div class="col-lg-7">
@@ -111,7 +77,7 @@
                     </div>
                     <div class="col-lg-5">
                         <div class="hero-img">
-                            <img src="assets/images/hero-one.png" alt="Image">
+                            <img src="{{ asset('assets/images/hero-one.png') }}" alt="Image">
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@
 @section('title',  $deal->name )
 @section('type',  'website' )
 @section('url',  Request::url() )
-@section('image',  asset('storage/' . $deal->images->first()->image) )
+@section('image',  asset('storage/' . $deal->images->first()->image)  )
 @section('description',  Str::limit($deal->summary, 120)  )
 @section('imagealt',  $deal->title )
 
@@ -50,6 +50,35 @@
       }
     }
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const countdownElements = document.querySelectorAll('.countdown');
+        
+            countdownElements.forEach(el => {
+                const endTime = new Date(el.dataset.end).getTime();
+        
+                function updateCountdown() {
+                    const now = new Date().getTime();
+                    const distance = endTime - now;
+        
+                    if (distance < 0) {
+                        el.innerHTML = 'Expired';
+                        return;
+                    }
+        
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+                    el.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+                }
+        
+                updateCountdown(); // initial call
+                setInterval(updateCountdown, 1000); // update every second
+            });
+        });
+        </script>
 @endsection
 
 
@@ -65,6 +94,11 @@
 
 
 @section('content')
+@php
+    $shareUrl = urlencode(route('deal', $deal->slug));
+    $dealTitle = urlencode($deal->title);
+    $imageUrl = urlencode(asset('storage/' . $deal->images->first()->image));
+@endphp
 <!--====== Start gig-details-section ======-->
 <div class="gig-details-section pt-120 pb-70">
     <div class="container">
@@ -160,10 +194,12 @@
                                 <div class="packages-content">
                                     <h3><span class="title">{{ $deal->name }}</span> <span class="price ml-10">${{ $deal->deal_price }}</span> <span class="price text-muted "><s>${{ $deal->price }}</s></span></h3>
                                     <p>{{ $deal->short_desc }}</p>
-                                    <span class="additional-info">
-                                        <h3><span class="price"></span>
-                                        <span class="text-muted price">Pay just ${{ $deal->deal_price }} for this deal!</span></h3>
-                                    </span><br/>
+                                    @if ( $deal->deal_ends != null)
+                                        <span class="additional-info">
+                                            <p>Deal expires in: <span class="countdown" data-end="{{ $deal->deal_ends }}"></span></p>
+                                        </span>
+                                    @endif
+                                    <br/>
                                     <div class="rating-info mb-10">
                                         <div class="">
                                             <div class="">
@@ -183,12 +219,34 @@
                                 </div>
                                 <div class="packages-footer">
                                     <button class="main-btn" onclick=" window.open('{{ route('linkredirect', $deal->slug) }}')">Get This Deal!</span></button>
-                                    <button class="btn-link">Compare Packages</button>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="widget-seller-details border mb-40">
+                        <p>Share this deals: 
+                        <div class="flex space-x-3 mt-2">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrl }}" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-facebook-square fa-2x pr-3"></i>
+                            </a>
+                            <a href="https://twitter.com/intent/tweet?url={{ $shareUrl }}&text={{ $dealTitle }}" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-twitter fa-2x pr-3"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ $shareUrl }}&title={{ $dealTitle }}" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-linkedin fa-2x pr-3"></i>
+                            </a>
+                            <a href="https://api.whatsapp.com/send?text={{ $dealTitle }}%20{{ $shareUrl }}" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-whatsapp fa-2x pr-3"></i>
+                            </a>
+                            <a href="https://pinterest.com/pin/create/button/?url={{ $shareUrl }}&media={{ $imageUrl }}&description={{ $dealTitle }}" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-pinterest fa-2x"></i>
+                            </a>
+                        </div>
+                        </p>
+                    </div>
                 </div>
+                
             </div>
         </div>
     </div>

@@ -10,7 +10,7 @@
                         <ul class="social-link">
                             <li><a href="" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
                             <li><a href="https://x.com/dealsintel" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="" target="_blank"><i class="fab fa-google"></i></a></li>
+                            <li><a href="https://pinterest.com/dealsintel" target="_blank"><i class="fab fa-pinterest"></i>
                             <li><a href="https://linkedin.com/company/dealsintel" target="_blank"><i class="fab fa-linkedin"></i></a></li>
                         </ul>
                     </div>
