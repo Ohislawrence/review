@@ -61,7 +61,7 @@
                                     <form action="{{ route('deals') }}" method="GET">
                                         <div class="form-inline">
                                             <input type="text" name="search"
-                                            value="{{ request('search') }}" class="form_control" placeholder="e. g. Shopify store theme">
+                                            value="{{ request('search') }}" class="form_control" placeholder="e. g. Ai Tools">
                                             <button class="main-btn" type="submit">Search<i class="fal fa-search"></i></button>
                                         </div>
                                     </form>

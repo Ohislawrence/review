@@ -15,18 +15,11 @@
                         </div>
                         <!-- Mobile Menu Logo -->
                         <div class="brand-logo text-center ml-2 mr-2 mb-4">
-                            <a href="{{ route('home') }}"><img src="{{ asset('assets/images/logo-1.png') }}" class="img-fluid" alt="Logo"></a>
+                            <a href="{{ route('home') }}"><img src="{{ asset('assets/images/dealsintel-black.png') }}" class="img-fluid" alt="Logo"></a>
                         </div>
                         <!-- Search form -->
                         <div class="nav-search ml-3 mr-3">
-                            <form>
-                                <div class="lang-dropdown">
-                                    <select class="wide mb-40">
-                                        <option value="01">En</option>
-                                        <option value="02">Ru</option>
-                                    </select>
-                                </div>
-                            </form>
+                            
                         </div>
                         <!-- main menu -->
                         <nav class="main-menu">
